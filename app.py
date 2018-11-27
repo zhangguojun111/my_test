@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, redirect, session, jsonify
 from flask_socketio import SocketIO, emit, send
 import json
