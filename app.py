@@ -49,7 +49,7 @@ def chenge_liked():
     return ""
 
 
-@app.route('/huge/')
+@app.route('/indexs/')
 def index1():
     if session["username"] != None and session["username"] != '':
 
@@ -156,7 +156,10 @@ def login():
         if user.password == password:
             session['username'] = username
             session['head_path']= user.head_path
-            return redirect("/huge/")
+            if username == 'wuyanzu':
+                return redirect("/wuyanzu/")
+            else:
+                return redirect("/indexs/")
         else:
             return render_template("404.html")
         # our_user = session.query(User).filter_by(name='ed').first()
