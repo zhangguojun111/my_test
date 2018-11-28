@@ -5,7 +5,7 @@ from flask import Flask, Blueprint
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey,DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-
+from sqlalchemy.sql import func
 # 创建引擎
 engine = create_engine("mysql+mysqlconnector://root:root@127.0.0.1:3306/my-weixin", echo=True)
 
@@ -49,7 +49,7 @@ class Circle_messages(Base):
     username = Column(String(100))
     head_path = Column(String(100))
     content =  Column(String(200))
-    postedtime = Column(DateTime, default=datetime.datetime.utcnow)
+    postedtime = Column(DateTime(timezone=True), server_default=func.now())
     liked = Column(String(10), default='false')
     show_comment = Column(String(10), default="false")
     def __repr__(self):
