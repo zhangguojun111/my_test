@@ -69,7 +69,7 @@ def edit_add():
     editadd = request.get_json()
     edit = db.Circle_messages(username=editadd["username"], head_path=editadd["head_path"], content=editadd["comment"])
     db.session.add(edit)
-    db.session.commit()
+    db.session.commit() #  这儿在服务器有问题
     print(edit)
     return jsonify({"status": "ok"})
 
